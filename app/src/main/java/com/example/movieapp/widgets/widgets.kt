@@ -32,11 +32,12 @@ import com.example.movieapp.model.getMovies
 @ExperimentalAnimationApi
 @Preview
 @Composable
-fun MovieRow(movie: Movie = getMovies()[0], onItemClick: (String) -> Unit = {} ){
+fun MovieRow(movie: Movie = getMovies()[0], isExpanded: Boolean = false, onItemClick: (String) -> Unit = {} ){
 
     var expanded by remember {
         mutableStateOf(false)
     }
+    expanded = isExpanded
 
     Card(
         modifier = Modifier
@@ -61,7 +62,7 @@ fun MovieRow(movie: Movie = getMovies()[0], onItemClick: (String) -> Unit = {} )
                 elevation = 0.dp
             ) {
 
-                Image(painter = rememberImagePainter(data = movie.images[0],
+                Image(painter = rememberImagePainter(data = movie.poster,
                     builder = {
                         crossfade(true)
                         transformations(CircleCropTransformation())

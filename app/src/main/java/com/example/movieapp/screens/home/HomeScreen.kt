@@ -1,9 +1,12 @@
 package com.example.movieapp.screens.home
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -17,6 +20,7 @@ import com.example.movieapp.model.getMovies
 import com.example.movieapp.navigation.MovieScreens
 import com.example.movieapp.widgets.MovieRow
 
+@ExperimentalAnimationApi
 @Composable
 fun HomeScreen(navController: NavController) {
         Scaffold(
@@ -35,12 +39,13 @@ fun HomeScreen(navController: NavController) {
 
 
 //@Preview(showBackground = true)
+@ExperimentalAnimationApi
 @Composable
 fun MainContent(
     navController: NavController,
     movieList: List<Movie> = getMovies()) {
     Column(
-        modifier = Modifier.padding(12.dp)
+        modifier = Modifier.padding(12.dp),
     ) {
         LazyColumn{
             items(items = movieList){
